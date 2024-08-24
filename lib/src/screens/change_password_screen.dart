@@ -8,12 +8,12 @@ class ChangePasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Change Password",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: const Text(
+      //     "Change Password",
+      //     style: TextStyle(fontWeight: FontWeight.bold),
+      //   ),
+      // ),
       body: const SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: defaultPadding),
         child: Column(

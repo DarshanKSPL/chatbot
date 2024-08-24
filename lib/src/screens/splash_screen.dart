@@ -1,6 +1,6 @@
 import 'package:chatbot/src/constants.dart';
 import 'package:chatbot/src/data/providers/AuthProvider.dart';
-import 'package:chatbot/src/screens/chat_screen.dart';
+import 'package:chatbot/src/screens/MainHomeScreen.dart';
 import 'package:chatbot/src/screens/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,7 +31,7 @@ class _SplashState extends State<StatefulWidget> {
           context,
           MaterialPageRoute(
               builder: (context) => authProvider.user != null
-                  ? const ChatScreen()
+                  ? const MainHomeScreen()
                   : const SignInScreen()));
     });
   }

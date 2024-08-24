@@ -25,6 +25,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     super.dispose();
   }
 
+  String getInitials(String? name) {
+    if (name != null && name.isNotEmpty) {
+      return name[0].toUpperCase();
+    }
+    return 'C'; // Return a default string if the name is empty
+  }
+
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
@@ -35,12 +42,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     _emailController.text = user?.username ?? "";
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Profile",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: const Text(
+      //     "Profile",
+      //     style: TextStyle(fontWeight: FontWeight.bold),
+      //   ),
+      // ),
       body: Container(
         color: Colors.white,
         width: double.infinity,
@@ -123,12 +130,5 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         ),
       ),
     );
-  }
-
-  String getInitials(String? name) {
-    if (name != null && name.isNotEmpty) {
-      return name[0].toUpperCase();
-    }
-    return 'C'; // Return a default string if the name is empty
   }
 }

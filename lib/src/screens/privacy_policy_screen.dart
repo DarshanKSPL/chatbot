@@ -15,12 +15,12 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Privacy Policy",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: const Text(
+      //     "Privacy Policy",
+      //     style: TextStyle(fontWeight: FontWeight.bold),
+      //   ),
+      // ),
       body: Stack(children: [
         WebViewWidget(
           key: _key,

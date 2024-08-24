@@ -1,7 +1,7 @@
 import 'package:chatbot/src/constants.dart';
 import 'package:chatbot/src/data/models/User.dart';
 import 'package:chatbot/src/data/providers/AuthProvider.dart';
-import 'package:chatbot/src/screens/chat_screen.dart';
+import 'package:chatbot/src/screens/MainHomeScreen.dart';
 import 'package:chatbot/src/screens/forgot_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -97,7 +97,7 @@ class _SignInFormState extends State<SignInForm> {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ChatScreen()));
+                        builder: (context) => const MainHomeScreen()));
               }
             },
             child: const Text("Sign in"),

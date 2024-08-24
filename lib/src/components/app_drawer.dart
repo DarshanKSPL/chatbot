@@ -6,7 +6,30 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
-  //const AppDrawer({super.key});
+  final Function(int) onItemTapped;
+
+  const AppDrawer({super.key, required this.onItemTapped});
+
+  String getFullName(User? user) {
+    if (user != null) {
+      return '${user.firstName} ${user.lastName}';
+    }
+    return '';
+  }
+
+  String getEmail(User? user) {
+    if (user != null) {
+      return user.username;
+    }
+    return '';
+  }
+
+  String getInitials(String? name) {
+    if (name != null && name.isNotEmpty) {
+      return name[0].toUpperCase();
+    }
+    return 'C'; // Return a default string if the name is empty
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,37 +44,59 @@ class AppDrawer extends StatelessWidget {
             decoration: const BoxDecoration(
               color: primaryColor,
             ),
-            child: Text(
-              getFullName(user),
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundColor: accentColor,
+                  child: Text(
+                    getInitials(user?.firstName),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: defaultPadding),
+                Text(
+                  getFullName(user),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20
+                  ),
+                ),
+                Text(
+                  getEmail(user),
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
           ),
           ListTile(
             leading: const Icon(Icons.home),
             title: const Text('Home'),
-            onTap: () {
-              // Handle navigation to Home
-              Navigator.pop(context); // Close the drawer
-            },
+            onTap: () => onItemTapped(0),
           ),
           ListTile(
             leading: const Icon(Icons.account_circle),
             title: const Text('Profile'),
-            onTap: () {
-              // Handle navigation to Profile
-              Navigator.pop(context); // Close the drawer
-            },
+            onTap: () => onItemTapped(1),
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
-            onTap: () {
-              // Handle navigation to Settings
-              Navigator.pop(context); // Close the drawer
-            },
+            leading: const Icon(Icons.lock),
+            title: const Text('Change Password'),
+            onTap: () => onItemTapped(2),
+          ),
+          ListTile(
+            leading: const Icon(Icons.contact_page),
+            title: const Text('Privacy Policy'),
+            onTap: () => onItemTapped(3),
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app),
@@ -71,12 +116,5 @@ class AppDrawer extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  String getFullName(User? user) {
-    if (user != null) {
-      return '${user.firstName} ${user.lastName}';
-    }
-    return '';
   }
 }
